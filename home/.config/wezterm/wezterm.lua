@@ -1,7 +1,7 @@
 local Config = require('config')
 
 require('utils.backdrops')
-   -- :set_images_dir(require('wezterm').home_dir .. '/Pictures/Wallpapers/')
+   :set_images_dir(require('wezterm').home_dir .. '/Pictures/Wallpapers/')
    :scan_images_dir()
    :random()
 

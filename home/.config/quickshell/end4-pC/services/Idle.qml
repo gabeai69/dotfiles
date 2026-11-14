@@ -2,21 +2,24 @@ pragma Singleton
 import qs.modules.common
 import QtQuick
 import Quickshell
-import Quickshell.Wayland
 
 /**
- * A nice wrapper for date and time strings.
+ * "Keep system awake" toggle.
+ *
+ * Hyprland ignores Wayland idle inhibitors on layer surfaces, so the original
+ * IdleInhibitor-based approach never worked. Instead, this stops hypridle while
+ * the toggle is on and starts it again when it is turned off.
  */
 Singleton {
     id: root
 
-    property alias inhibit: idleInhibitor.enabled
-    inhibit: false
+    property bool inhibit: false
 
     Connections {
         target: Persistent
         function onReadyChanged() {
             root.inhibit = Persistent.states.idle.inhibit;
+            root.apply();
         }
     }
 
@@ -29,23 +32,21 @@ Singleton {
         Persistent.states.idle.inhibit = root.inhibit;
     }
 
-    IdleInhibitor {
-        id: idleInhibitor
-        window: PanelWindow {
-            // Inhibitor requires a "visible" surface
-            // Actually not lol
-            implicitWidth: 0
-            implicitHeight: 0
-            color: "transparent"
-            // Just in case...
-            anchors {
-                right: true
-                bottom: true
-            }
-            // Make it not interactable
-            mask: Region {
-                item: null
-            }
-        }
+    function apply() {
+        if (root.inhibit)
+            Quickshell.execDetached(["pkill", "-x", "hypridle"]);
+        else
+            Quickshell.execDetached(["bash", "-c", "pidof hypridle >/dev/null || setsid -f hypridle >/dev/null 2>&1"]);
+    }
+
+    onInhibitChanged: apply()
+
+    // hypridle is started at login by Hyprland and restarted by the Idle settings
+    // page, so keep it stopped while the toggle is on.
+    Timer {
+        running: root.inhibit
+        repeat: true
+        interval: 5000
+        onTriggered: root.apply()
     }
 }

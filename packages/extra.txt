@@ -1,0 +1,33 @@
+# Paket tambahan di luar dependensi illogical-impulse (diinstall via yay).
+# Baris diawali '#' diabaikan. Tambah/hapus sesuka kamu.
+alacritty
+btop
+fastfetch
+ffmpegthumbnailer
+firefox
+git
+lazygit
+luarocks
+meld
+mermaid-cli
+micro
+mpvpaper
+neovim
+nwg-displays
+sddm
+tectonic
+tree-sitter-cli
+unrar
+unzip
+vlc-plugins-all
+wezterm
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-dejavu
+ttf-liberation
+ttf-meslo-nerd
+ttf-opensans
+power-profiles-daemon
+bluez
+bluez-utils
