@@ -1,0 +1,18 @@
+# Per-device (dibuat nwg-displays) — jangan dibagi antar device
+home/.config/hypr/monitors.conf
+home/.config/hypr/monitors.lua
+home/.config/hypr/workspaces.conf
+home/.config/hypr/workspaces.lua
+home/.config/nwg-displays/
+# Penanda install illogical-impulse (berisi path absolut)
+home/.config/illogical-impulse/installed_*
+# Cache / history
+home/.config/micro/buffers/
+home/.config/micro/backups/
+home/.config/wezterm/lua_modules/
+home/.config/wezterm/.luarocks/
+home/.config/gtk-3.0/bookmarks
+*.dotbak-*
+.DS_Store
+# Gambar README upstream end4-pC
+home/.config/quickshell/end4-pC/screenshots/
