@@ -38,5 +38,5 @@ else
   echo "Tersimpan: $(git log -1 --oneline)"
 fi
 if git remote get-url origin >/dev/null 2>&1; then
-  git push -q origin HEAD && echo "Di-push ke $(git remote get-url origin)"
+  git push -q origin main upstream && echo "Di-push ke $(git remote get-url origin)"
 fi

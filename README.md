@@ -39,6 +39,22 @@ Untuk commit dan push:
 
 Di device lain: `cd ~/dotfiles && git pull`, lalu `./install.sh --links-only` kalau ada file baru.
 
+## Sumber asli & update dari upstream
+
+Dotfiles ini dibangun dari beberapa proyek open source. Kredit lengkap dan lisensinya ada di
+[`CREDITS.md`](CREDITS.md). Branch `upstream` menyimpan file aslinya, sedangkan `main` berisi
+modifikasi kamu di atasnya.
+
+```bash
+./upstream.sh list                  # sumber + commit yang dipakai
+./upstream.sh diff                  # apa saja yang sudah kamu ubah
+./upstream.sh update end4-pC        # tarik versi terbaru end4-pC, merge dengan modifikasimu
+./save.sh                           # push hasilnya
+```
+
+Kalau versi baru dari upstream mengubah baris yang sama dengan yang kamu ubah, git akan
+menandainya sebagai konflik untuk diselesaikan manual (atau dibatalkan dengan `git merge --abort`).
+
 ## Catatan
 
 - **Monitor bersifat per-device.** `hypr/monitors.*` dan `hypr/workspaces.*` tidak di-commit

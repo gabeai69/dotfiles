@@ -1,0 +1,30 @@
+# Sumber asli (upstream) yang dipakai di dotfiles ini.
+# Kolom (dipisah TAB): nama  url  commit  path-di-upstream  path-di-repo-ini
+# Satu sumber boleh punya beberapa baris (beberapa folder).
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/hypr	home/.config/hypr
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/quickshell/ii	home/.config/quickshell/ii
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/matugen	home/.config/matugen
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/fuzzel	home/.config/fuzzel
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/wlogout	home/.config/wlogout
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/foot	home/.config/foot
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/kitty	home/.config/kitty
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/fish	home/.config/fish
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/zshrc.d	home/.config/zshrc.d
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/xdg-desktop-portal	home/.config/xdg-desktop-portal
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/Kvantum	home/.config/Kvantum
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/fontconfig	home/.config/fontconfig
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/mpv	home/.config/mpv
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/kde-material-you-colors	home/.config/kde-material-you-colors
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/starship.toml	home/.config/starship.toml
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/chrome-flags.conf	home/.config/chrome-flags.conf
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/code-flags.conf	home/.config/code-flags.conf
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/thorium-flags.conf	home/.config/thorium-flags.conf
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/darklyrc	home/.config/darklyrc
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/dolphinrc	home/.config/dolphinrc
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/konsolerc	home/.config/konsolerc
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/kdeglobals	home/.config/kdeglobals
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.local/share/icons/illogical-impulse.svg	home/.local/share/icons/illogical-impulse.svg
+dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.local/share/konsole	home/.local/share/konsole
+end4-pC	https://github.com/pctrade/end4-pC.git	8135351525a916778bc3ead276a85095c6c1e59b	.	home/.config/quickshell/end4-pC
+wezterm-config	https://github.com/KevinSilvester/wezterm-config.git	052853ec9bbc4855026c3974a89ec34c826ba209	.	home/.config/wezterm
+google-sans-flex	https://github.com/end-4/google-sans-flex.git	251aa5abd30496368f634e54ce2a508fe5a2fdfa	.	home/.local/share/fonts/illogical-impulse-google-sans-flex
