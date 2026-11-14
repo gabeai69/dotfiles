@@ -42,8 +42,8 @@ Di device lain: `cd ~/dotfiles && git pull`, lalu `./install.sh --links-only` ka
 ## Sumber asli & update dari upstream
 
 Dotfiles ini dibangun dari beberapa proyek open source. Kredit lengkap dan lisensinya ada di
-[`CREDITS.md`](CREDITS.md). Branch `upstream` menyimpan file aslinya, sedangkan `main` berisi
-modifikasi kamu di atasnya.
+[`CREDITS.md`](CREDITS.md). Di riwayat git, commit `upstream(...)` menyimpan file aslinya, dan
+commit lainnya adalah modifikasi kamu di atasnya.
 
 ```bash
 ./upstream.sh list                  # sumber + commit yang dipakai

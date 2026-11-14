@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Kelola file dari sumber asli (upstream) di dotfiles ini.
 #
-# Cara kerjanya:
-#   branch `upstream` = file ASLI dari tiap sumber (tidak pernah diedit manual)
-#   branch `main`     = upstream + modifikasi kamu
+# Cara kerjanya (cuma ada branch main):
+#   commit berjudul "upstream(...)"  = file ASLI dari sumber, tanpa modifikasi
+#   commit lainnya                   = modifikasi kamu
+#   Commit upstream terbaru di riwayat main = keadaan asli terkini (dipakai untuk diff/update).
 #
 #   ./upstream.sh list                  # daftar sumber + commit yang dipakai
 #   ./upstream.sh diff [nama] [--full]  # apa saja yang kamu ubah dari aslinya
@@ -17,6 +18,8 @@ CACHE="$HOME/.cache/dotfiles-upstream"
 cd "$DOTS"
 
 rows() { grep -vE '^\s*(#|$)' "$TSV" | awk -F'\t' -v n="${1:-}" 'n=="" || $1==n'; }
+# commit "upstream(...)" terbaru yang ada di riwayat main = snapshot asli terkini
+base() { git log -1 --format=%H --grep='^upstream(' refs/heads/main; }
 names() { rows | cut -f1 | awk '!s[$0]++'; }
 need_name() { rows "$1" | grep -q . || { echo "Sumber tidak dikenal: $1 (lihat: $0 list)"; exit 1; }; }
 
@@ -64,8 +67,8 @@ case "${1:-}" in
     for a in "$@"; do [[ "$a" == --full ]] && full=1 || name="$a"; done
     [[ -n "$name" ]] && need_name "$name"
     mapfile -t paths < <(rows "$name" | cut -f5)
-    if (( full )); then git diff refs/heads/upstream refs/heads/main -- "${paths[@]}"
-    else git diff --stat=120 refs/heads/upstream refs/heads/main -- "${paths[@]}"; fi
+    if (( full )); then git diff "$(base)" refs/heads/main -- "${paths[@]}"
+    else git diff --stat=120 "$(base)" refs/heads/main -- "${paths[@]}"; fi
     ;;
 
   update)
@@ -80,20 +83,20 @@ case "${1:-}" in
     [[ "$new" == "$old" ]] && { echo "$name sudah di versi ${new:0:8}."; exit 0; }
 
     wt="$(mktemp -d)"; trap 'git worktree remove --force "$wt" 2>/dev/null || true' EXIT
-    git worktree add --quiet --detach "$wt" refs/heads/upstream
+    git worktree add --quiet --detach "$wt" "$(base)"
     import "$name" "$clone" "$wt"
     git -C "$wt" add -A
     git -C "$wt" commit --quiet -m "upstream($name): ${old:0:8} -> ${new:0:8}" \
       -m "Sumber asli: $(rows "$name" | head -1 | cut -f2) @ $new" \
-      -m "File di commit ini adalah salinan TANPA modifikasi dari sumber di atas." || true
-    git update-ref refs/heads/upstream "$(git -C "$wt" rev-parse HEAD)"
+      -m "File di commit ini adalah salinan TANPA modifikasi dari sumber di atas."
+    snap="$(git -C "$wt" rev-parse HEAD)"
 
     sed -i "s/^\($name\t[^\t]*\t\)$old/\1$new/" "$TSV"
     git add "$TSV"
     git commit --quiet -m "upstream: catat $name @ ${new:0:8}"
 
     echo "Merge update $name ke main..."
-    if git merge --no-edit -m "Merge upstream $name ${new:0:8}" refs/heads/upstream; then
+    if git merge --no-edit -m "Merge upstream $name ${new:0:8}" "$snap"; then
       echo "Berhasil. Cek hasilnya, lalu ./save.sh untuk push."
     else
       echo

@@ -18,11 +18,11 @@ Commit persis yang dipakai tercatat di [`upstream/sources.tsv`](upstream/sources
 
 ## Mana yang asli, mana yang dimodifikasi?
 
-Repo ini memisahkan keduanya lewat git:
+Repo ini memisahkan keduanya lewat riwayat git (cuma ada branch `main`):
 
-- **Branch `upstream`** berisi salinan *tanpa modifikasi* dari setiap sumber di atas, satu commit
-  per sumber, lengkap dengan URL dan commit hash-nya.
-- **Branch `main`** = `upstream` + modifikasi pribadi (commit-commit setelahnya).
+- **Commit berjudul `upstream(<nama>): ...`** berisi salinan *tanpa modifikasi* dari sumber di atas,
+  lengkap dengan URL dan commit hash-nya (`git log --grep='^upstream('`).
+- **Commit lainnya** adalah modifikasi pribadi di atasnya.
 
 Untuk melihat semua perubahan terhadap aslinya:
 
