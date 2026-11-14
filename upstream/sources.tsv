@@ -25,6 +25,6 @@ dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b12
 dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.config/kdeglobals	home/.config/kdeglobals
 dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.local/share/icons/illogical-impulse.svg	home/.local/share/icons/illogical-impulse.svg
 dots-hyprland	https://github.com/end-4/dots-hyprland.git	cb1c428bf841dabccff1b126904047c28e89ba8c	dots/.local/share/konsole	home/.local/share/konsole
-end4-pC	https://github.com/pctrade/end4-pC.git	8135351525a916778bc3ead276a85095c6c1e59b	.	home/.config/quickshell/end4-pC
+end4-pC	https://github.com/pctrade/end4-pC.git	7538c66f2597959733c26a4ccccac1ebe6b4f56e	.	home/.config/quickshell/end4-pC
 wezterm-config	https://github.com/KevinSilvester/wezterm-config.git	052853ec9bbc4855026c3974a89ec34c826ba209	.	home/.config/wezterm
 google-sans-flex	https://github.com/end-4/google-sans-flex.git	251aa5abd30496368f634e54ce2a508fe5a2fdfa	.	home/.local/share/fonts/illogical-impulse-google-sans-flex
