@@ -213,9 +213,29 @@ Variants {
             }
 
             Image {
+                id: blurredWallpaperSource
+                anchors.fill: parent
+                source: bgRoot.wallpaperIsVideo || bgRoot.wallpaperSafetyTriggered ? "" : bgRoot.wallpaperPath
+                sourceSize: Qt.size(Math.ceil(bgRoot.modelData.width / 4), Math.ceil(bgRoot.modelData.height / 4))
+                fillMode: Image.PreserveAspectCrop
+                asynchronous: true
+                visible: false
+            }
+
+            FastBlur {
+                anchors.fill: parent
+                source: blurredWallpaperSource
+                radius: 64
+                transparentBorder: false
+                visible: !bgRoot.wallpaperIsVideo && !bgRoot.wallpaperSafetyTriggered
+                    && !centeredWallpaper.centeredHidesFullWallpaper
+                opacity: centeredWallpaper.centeredFullWallpaperOpacity()
+            }
+
+            Image {
                 id: previousWallpaper
                 anchors.fill: parent
-                fillMode: Image.PreserveAspectCrop
+                fillMode: Image.PreserveAspectFit
                 // Same size as `wallpaper` so this synchronous Image reuses its cached pixmap
                 sourceSize: bgRoot.wallpaperSourceSize
                 cache: true
@@ -229,7 +249,7 @@ Variants {
             StyledImage {
                 id: wallpaper
                 anchors.fill: parent
-                fillMode: Image.PreserveAspectCrop
+                fillMode: Image.PreserveAspectFit
                 sourceSize: bgRoot.wallpaperSourceSize
                 cache: true
                 smooth: true

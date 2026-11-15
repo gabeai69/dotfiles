@@ -32,14 +32,24 @@ Singleton {
     property var orderMap: ({})
     property bool orderLoaded: false
     property string searchQuery: ""
-    readonly property list<string> extensions: [ // TODO: add videos
-        "jpg", "jpeg", "png", "webp", "avif", "bmp", "svg"
+    readonly property list<string> extensions: [
+        "jpg", "jpeg", "png", "webp", "avif", "bmp", "svg",
+        "mp4", "webm", "mkv", "avi", "mov"
     ]
     property list<string> wallpapers: [] // List of absolute file paths (without file://)
     readonly property bool thumbnailGenerationRunning: thumbgenProc.running
     property real thumbnailGenerationProgress: 0
     property string previewPath: ""  // Set during arrow navigation; empty by default
     property string confirmedPath: ""  // Holds confirmed path until config catches up
+
+    Connections {
+        target: Config.options.background
+        function onWallpaperPathChanged() {
+            // The system picker updates config directly, bypassing apply().
+            // Do not keep an earlier grid selection over that new wallpaper.
+            root.confirmedPath = "";
+        }
+    }
 
     signal changed()
     signal thumbnailGenerated(directory: string)
